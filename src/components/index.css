@@ -1,0 +1,21 @@
+.composition-comp {
+  width: 400px;
+  border: 2px solid #999;
+  background-color: #f9f9f9;
+  padding: 16px;
+}
+
+.count {
+  margin-bottom: 16px;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action button {
+  width: 80px;
+  height: 40px;
+  background-color: rgba(39, 93, 197, 0.25);
+}
