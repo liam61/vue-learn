@@ -3,6 +3,7 @@
   border: 2px solid #999;
   background-color: #f9f9f9;
   padding: 16px;
+  margin-bottom: 16px;
 }
 
 .count {
@@ -18,4 +19,11 @@
   width: 80px;
   height: 40px;
   background-color: rgba(39, 93, 197, 0.25);
+}
+
+.jsx-slot {
+  padding: 16px;
+  margin-bottom: 8px;
+  border: 2px solid #999;
+  border-radius: 4px;
 }

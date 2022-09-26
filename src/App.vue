@@ -30,7 +30,19 @@
     </template>
   </DynamicSlot>
 
-  <CompositionComp />
+  <h1>Demo3</h1>
+
+  <CompositionComp :defaultValue="count" @count-decrease="handleDecrease" />
+
+  <h1>Demo4</h1>
+
+  <JSXSlot ref="jsxSlotApp">
+    <div style="color: red">children component by user</div>
+
+    <template #content>
+      <span style="color: red">content component by user</span>
+    </template>
+  </JSXSlot>
 </template>
 
 <script>
@@ -39,6 +51,7 @@ import HelloWorldVue from "./components/HelloWorld.vue";
 import SlotComponent from "./components/SlotComponent";
 import DynamicSlot from "./components/DynamicSlot";
 import { CompositionComp } from "./components/CompositionAPI";
+import { JSXSlot } from "./components/JSXSlot";
 
 export default {
   name: "App",
@@ -47,6 +60,7 @@ export default {
     SlotComponent,
     DynamicSlot,
     CompositionComp,
+    JSXSlot
   },
   data() {
     return {
@@ -58,17 +72,22 @@ export default {
         { id: 44, label: "dd", value: "four" },
       ],
       dynamicId: "44",
+      count: 2
     };
   },
-  method() {
-    return {
-      getDynamicId() {
-        return "item-44";
-      },
-    };
+  methods: {
+    getDynamicId() {
+      return "item-44";
+    },
+    handleDecrease(value) {
+      console.log('decrease props', value);
+    }
   },
   setup() {
     provide('globalState', { foo: 'foo', bar: true })
+  },
+  mounted() {
+    console.log(this.$refs.jsxSlotApp.message);
   }
 };
 </script>
