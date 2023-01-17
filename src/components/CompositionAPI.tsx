@@ -34,7 +34,7 @@ export const CompositionComp = defineComponent({
     // 2. reactive
     const doubleCount = computed(() => count.value * 2)
 
-    const stop = watchEffect(onCleanup => {
+    const stop = watchEffect((onCleanup) => {
       console.log(`watchEffect: ${count.value}, ${doubleCount.value}`)
     }, {})
 
@@ -54,11 +54,11 @@ export const CompositionComp = defineComponent({
 
     // 3. expose & ref
     expose({ count })
-    const jsxSlot = ref<typeof JSXSlot>(null)
+    const jsxSlot = ref<typeof JSXSlot | null>(null)
 
     // 4. hooks
     onMounted(() => {
-      console.log("onMounted,", jsxSlot.value.callback())
+      console.log("onMounted,", jsxSlot.value?.callback())
     })
 
     onUpdated(() => {
@@ -66,7 +66,7 @@ export const CompositionComp = defineComponent({
     })
 
     // 5. provide & inject
-    const globalState = inject("globalState")
+    const globalState: any = inject("globalState")
 
     return () => (
       <>
